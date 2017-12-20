@@ -10,6 +10,23 @@ public class Result {
     private String message;
     private Object data;
 
+    public Result() {
+    }
+
+    public Result(ResultCode resultCode, String message, Object data) {
+        this.code = resultCode.code;
+        this.message = message;
+        this.data = data;
+    }
+
+    public static Result ok(Object data) {
+        return new Result(ResultCode.SUCCESS, "success", data);
+    }
+
+    public static Result error(String message) {
+        return new Result(ResultCode.INTERNAL_SERVER_ERROR, message, null);
+    }
+
     public Result setCode(ResultCode resultCode) {
         this.code = resultCode.code;
         return this;

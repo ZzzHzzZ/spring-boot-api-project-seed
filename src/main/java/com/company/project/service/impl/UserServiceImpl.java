@@ -6,6 +6,8 @@ import com.company.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * descrition：
  *
@@ -22,5 +24,12 @@ public class UserServiceImpl implements UserService {
     public User getUser(Integer id) {
         User user = this.userMapper.selectByPrimaryKey(id);
         return user;
+    }
+
+    @Override
+    public void insertUser(User user) {
+        user.setAdmin(false);
+        user.setCtime(new Date());
+        this.userMapper.insertSelective(user);
     }
 }

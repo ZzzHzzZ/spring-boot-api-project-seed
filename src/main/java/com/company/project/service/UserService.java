@@ -11,4 +11,6 @@ import com.company.project.model.User;
  */
 public interface UserService {
     User getUser(Integer id);
+
+    void insertUser(User user);
 }

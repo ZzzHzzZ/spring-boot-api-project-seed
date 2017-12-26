@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.project.dao.UserMapper">
-
+    <select id="listPermissionByUserId" resultType="java.lang.String">
+        select permission.permissionname from t_user
+        left join t_user_role user_role on user_role.user_id = t_user.id
+        left join t_permission permission on permission.role_id = user_role.role_id
+        where t_user.id=#{id}
+    </select>
 </mapper>

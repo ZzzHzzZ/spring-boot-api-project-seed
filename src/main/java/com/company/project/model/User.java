@@ -3,6 +3,7 @@ package com.company.project.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
@@ -12,16 +13,18 @@ import java.util.Date;
  * @create: 2017/12/20
  * @company: www.ideabinder.com
  */
+@Table(name = "t_user")
 public class User {
     @Id
     private Integer id;
     private String username;
     private String password;
-    @JsonProperty("nick_name")
-    private String nickName;
-    private Integer sex;
-    @JsonProperty("register_date")
-    private Date registerDate;
+    private String name;
+    private String mobile;
+    private String email;
+    private Date ctime;
+    private Boolean deleted;
+    private Boolean admin;
 
     public Integer getId() {
         return id;
@@ -47,27 +50,51 @@ public class User {
         this.password = password;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getName() {
+        return name;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getSex() {
-        return sex;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setSex(Integer sex) {
-        this.sex = sex;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
-    public Date getRegisterDate() {
-        return registerDate;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRegisterDate(Date registerDate) {
-        this.registerDate = registerDate;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getCtime() {
+        return ctime;
+    }
+
+    public void setCtime(Date ctime) {
+        this.ctime = ctime;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
 }

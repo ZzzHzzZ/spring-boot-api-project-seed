@@ -19,6 +19,10 @@ public class Result {
         this.data = data;
     }
 
+    public static Result ok() {
+        return new Result(ResultCode.SUCCESS, "sucess", null);
+    }
+
     public static Result ok(Object data) {
         return new Result(ResultCode.SUCCESS, "success", data);
     }

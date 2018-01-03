@@ -6,7 +6,11 @@ import com.company.project.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * descrition：
@@ -15,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @create: 2017/12/20
  * @company: www.ideabinder.com
  */
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
@@ -24,13 +28,14 @@ public class UserController {
     UserService userServiceImpl;
 
     @GetMapping("/getUser")
-    public Result getUser(@RequestParam("id") Integer id) {
+    public String getUser(@RequestParam("id") Integer id, HttpServletRequest request) {
         try {
             User user = this.userServiceImpl.getUser(id);
-            return Result.ok(user);
+            request.setAttribute("user", user);
+            return "test";
         } catch (Exception e) {
             logger.error("获取人员信息失败", e);
-            return Result.error("获取人员信息失败");
+            return "error";
         }
     }
 
